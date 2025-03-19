@@ -1,68 +1,104 @@
-# Machine Failure Prediction Model
 
-## Overview
-This project is a **Machine Failure Prediction Model** designed to analyze operational conditions and predict potential failures in an industrial setting. Using **Machine Learning**, this model processes sensor data to forecast **machine failures** and assist in **predictive maintenance** and **quality control**.
 
-## Dataset
-The model is trained on a dataset that contains sensor readings and machine parameters. The dataset includes the following features:
+# **Machine-Failure-Prediction-Model**  
 
-| Column Name          | Description |
-|----------------------|-------------|
-| **Unique ID**        | Unique identifier for each machine instance |
-| **Product ID**       | ID of the manufactured product |
-| **Quality**          | Quality rating of the product (L = Low, M = Medium, H = High) |
-| **Ambient T (°C)**   | Environmental temperature around the machine |
-| **Process T (°C)**   | Internal machine temperature while operating |
-| **Rotation Speed (RPM)** | Speed at which the machine is running |
-| **Torque (Nm)**      | Rotational force applied to machine components |
-| **Tool Wear (min)**  | Duration (in minutes) the tool has been in use |
-| **Machine Status**   | Status of the machine (0 = Normal, 1 = Failure) |
+This project is a machine learning model that predicts **machine status** in a factory setting based on various sensor data. The model processes real-time input such as **temperature, speed, torque, and tool wear** to determine whether a machine is functioning properly or failing.  
 
-## Model Performance
-The model was trained using **imbalanced learning techniques** to handle cases where failures are rare. The key performance metrics are:
-- **Accuracy:** 99%
-- **Precision, Recall, F1-score:** Consistently high across classes
+## **Dataset**  
+The dataset used in this project is stored in **`factory_data (classification).csv`**, which contains sensor readings and machine status.  
 
-## Usage
-To use this model:
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/yourusername/machine-failure-prediction.git
-   cd machine-failure-prediction
-   ```
-2. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
-3. Run the model:
-   ```sh
-   python model.py
-   ```
-4. Enter custom input values when prompted:
-   ```
-   Enter Ambient Temperature (C): 68
-   Enter Process Temperature (C): 56
-   Enter Rotation Speed (rpm): 7000
-   Enter Torque (Nm): 87
-   Enter Tool Wear (min): 3
-   ```
-5. The model will predict whether the machine is likely to fail (`1`) or run normally (`0`).
+### **Columns in the dataset:**  
+1. **Unique ID** - A unique identifier for each data entry (dropped for modeling).  
+2. **Product ID** - Identifier for the product being processed (dropped for modeling).  
+3. **Quality** - Categorical variable representing product quality (Low, Medium, High).  
+4. **Ambient T (C)** - Ambient temperature in degrees Celsius.  
+5. **Process T (C)** - Process temperature in degrees Celsius.  
+6. **Rotation Speed (rpm)** - Speed of the machine in revolutions per minute.  
+7. **Torque (Nm)** - Torque applied by the machine in Newton-meters.  
+8. **Tool Wear (min)** - Duration for which the tool has been used (in minutes).  
+9. **Machine Status** - **Target variable** indicating machine health (0 = Normal, 1 = Failure).  
 
-## Dependencies
-- Python 3.12
-- Pandas
-- NumPy
-- Scikit-Learn
-- Imbalanced-learn
+---
 
-## Applications
-- **Predictive Maintenance**: Reduces downtime by predicting failures early.
-- **Quality Control**: Identifies manufacturing conditions affecting product quality.
-- **Cost Reduction**: Optimizes machine operations and minimizes maintenance costs.
+## **Project Files**  
 
-## Contributing
-Feel free to contribute to this project! Fork the repo, make improvements, and submit a pull request.
+- **`mod.py`** → Main Python script that trains the model and allows user input.  
+- **`factory_data (classification).csv`** → Dataset containing factory sensor readings and machine status.  
+- **`README.md`** → This file, describing the project.  
+- **`requirements.txt`** → List of required Python libraries for running the model.  
 
-## License
-This project is licensed under the MIT License.
+---
 
+## **Model Overview**  
+
+The model uses **Logistic Regression** for binary classification. It takes machine sensor inputs, scales them, and predicts whether a machine is **operational (0) or failing (1)**.  
+
+### **Steps in Model Training:**  
+1. Load and clean the dataset (handle missing values, drop unnecessary columns).  
+2. Encode categorical features (convert product quality into numerical values).  
+3. Standardize numerical features using **StandardScaler**.  
+4. Split the data into training and testing sets.  
+5. Train a **Logistic Regression** model.  
+6. Evaluate the model using **accuracy score and classification report**.  
+
+---
+
+## **How to Use**  
+
+### **1️⃣ Install Dependencies**  
+Run the following command to install required libraries:  
+```bash
+pip install -r requirements.txt
+```  
+
+### **2️⃣ Run the Model**  
+Run the script and enter custom inputs when prompted:  
+```bash
+python mod.py
+```  
+
+### **3️⃣ Input Features**  
+When prompted, enter values for the following:  
+- **Ambient Temperature (°C)**  
+- **Process Temperature (°C)**  
+- **Rotation Speed (rpm)**  
+- **Torque (Nm)**  
+- **Tool Wear (min)**  
+
+### **4️⃣ Get Predictions**  
+The model will output **0 (Normal) or 1 (Failure)** based on the input data.  
+
+---
+
+## **Example Run**  
+```bash
+Enter Ambient Temperature (C): 24.5
+Enter Process Temperature (C): 36.0
+Enter Rotation Speed (rpm): 1400
+Enter Torque (Nm): 45.0
+Enter Tool Wear (min): 20
+```
+**Output:**  
+```
+Predicted Machine Status: Normal (0)
+```
+or  
+```
+Predicted Machine Status: Failure (1)
+```
+
+---
+
+## **Improvements & Future Enhancements**  
+✔️ Implement other classification models (e.g., Random Forest, SVM).  
+✔️ Improve feature engineering for better accuracy.  
+✔️ Deploy the model as a web application.  
+
+---
+
+## **Contributing**  
+Feel free to contribute by improving the model, dataset, or adding new features.  
+
+Happy coding! 🚀  
+
+---
