@@ -1,7 +1,3 @@
-
-
----
-
 # **Machine-Failure-Prediction-Model**  
 
 This project is a machine learning model that predicts **machine status** in a factory setting based on various sensor data. The model processes real-time input such as **temperature, speed, torque, and tool wear** to determine whether a machine is functioning properly or failing.  
@@ -10,7 +6,7 @@ This project is a machine learning model that predicts **machine status** in a f
 
 ## **Dataset**  
 
-The dataset used in this project is stored in **`factory_data (classification).csv`**, which contains sensor readings and machine status.  
+The dataset used in this project is stored in **factory_data (classification).csv**, which contains sensor readings and machine status.  
 
 ### **Columns in the dataset:**  
 | Feature Name          | Description |
@@ -27,12 +23,12 @@ The dataset used in this project is stored in **`factory_data (classification).c
 
 ---
 
-## **📂 Project Files**  
+## **💂 Project Files**  
 
-- **`mod.py`** → Main Python script that trains the model and allows user input.  
-- **`factory_data (classification).csv`** → Dataset containing factory sensor readings and machine status.  
-- **`requirements.txt`** → List of required Python libraries for running the model.  
-- **`README.md`** → This file, describing the project.  
+- **gui_main.py** → Main Python script that trains the model and allows user input.  
+- **factory_data (classification).csv** → Dataset containing factory sensor readings and machine status.  
+- **requirements.txt** → List of required Python libraries for running the model.  
+- **README.md** → This file, describing the project.  
 
 ---
 
@@ -67,9 +63,9 @@ pip install -r requirements.txt
 
 ### **3️⃣ Run the model**  
 ```sh
-python mod.py
-```  
-
+python  gui_main.py
+```
+  
 ### **4️⃣ Input Features**  
 When prompted, enter values for the following:  
 - **Ambient Temperature (°C)**  
@@ -91,14 +87,12 @@ Enter Rotation Speed (rpm): 1400
 Enter Torque (Nm): 45.0
 Enter Tool Wear (min): 20
 ```
+
 **Output:**  
-```
 Predicted Machine Status: Normal (0)
-```
+
 or  
-```
 Predicted Machine Status: Failure (1)
-```
 
 ---
 
